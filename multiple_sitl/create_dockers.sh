@@ -19,7 +19,7 @@ do
     touch $i.hwID
 
     # Run the Docker container
-    docker run --name drone-$i -d drone-template-1 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+    docker run --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
 
     # Give Docker a moment to get the container up and running
     sleep 2
