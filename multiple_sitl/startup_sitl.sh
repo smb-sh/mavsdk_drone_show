@@ -50,7 +50,7 @@ DEFAULT_ALT=1208
 
 
 # Read hwID from the file
-while [ ! -f ~/mavsdk_drone_show/*.hwID ]; do
+whil [ ! -f ~/mavsdk_drone_show/*.hwID ]; dox
   echo "Waiting for hwID file..."
   sleep 1
 done
