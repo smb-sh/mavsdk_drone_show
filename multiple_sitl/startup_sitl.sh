@@ -39,8 +39,8 @@ case $1 in
 esac
 
 # Default position: Mehrabad Airport
-DEFAULT_LAT=35.6857
-DEFAULT_LON=51.3036
+DEFAULT_LAT=36.478070
+DEFAULT_LON=52.880756
 DEFAULT_ALT=1208
 
 # Default position: Azadi Stadium
@@ -50,7 +50,7 @@ DEFAULT_ALT=1208
 
 
 # Read hwID from the file
-whil [ ! -f ~/mavsdk_drone_show/*.hwID ]; dox
+while [ ! -f ~/mavsdk_drone_show/*.hwID ]; do
   echo "Waiting for hwID file..."
   sleep 1
 done
