@@ -39,8 +39,8 @@ case $1 in
 esac
 
 # Default position: Mehrabad Airport
-DEFAULT_LAT=36.478070
-DEFAULT_LON=52.880756
+DEFAULT_LAT=36.1206
+DEFAULT_LON=-115.1614
 DEFAULT_ALT=1208
 
 # Default position: Azadi Stadium
