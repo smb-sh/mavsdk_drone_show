@@ -109,7 +109,7 @@ class Mission(Enum):
 
 
 # Sim Mode
-sim_mode = True # False  # Set this variable to True for simulation mode (the ip of all drones will be the same)
+sim_mode = False  # Set this variable to True for simulation mode (the ip of all drones will be the same)
 
 telem_struct_fmt = '=BHHBBIddddddddBIB'
 command_struct_fmt = '=B B B B B I B'
