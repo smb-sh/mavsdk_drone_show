@@ -255,7 +255,7 @@ try:
         drones_threads.append((sock, telemetry_thread, coordinator_ip, debug_port, hw_id, pos_id))
 
     # Main loop for command input
-    mission = 0
+    mission = 2 
     state = 0
     n = 0
     while True:
