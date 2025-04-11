@@ -36,8 +36,8 @@ do
 
         # اجرای کانتینر داکر
         #docker run --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
-        #docker run --cpus="0.1" --log-driver=json-file --log-opt max-size=10m --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
-        docker run --cpus="0.2" --log-driver=none --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+        docker run --cpus="0.2" --log-driver=json-file --log-opt max-size=50m --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+        # docker run --cpus="0.2" --log-driver=none --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
 
         # وقفه کوتاه
         sleep 2
