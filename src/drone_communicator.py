@@ -107,7 +107,8 @@ class DroneCommunicator:
 
     def process_packet(self, data):
         header, terminator = struct.unpack('BB', data[0:1] + data[-1:])
-        
+        print(f"[DEBUG] Raw packet received: {data} - len: {len(data)}")
+
         if header == 55 and terminator == 66 and len(data) == self.params.command_packet_size:
             header, hw_id, pos_id, mission, state, trigger_time, terminator = struct.unpack(self.params.command_struct_fmt, data)
             logging.info(f"Received command from GCS: hw_id: {hw_id}, pos_id: {pos_id}, mission: {mission}, state: {state}, trigger_time: {trigger_time}")

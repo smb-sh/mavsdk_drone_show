@@ -246,6 +246,7 @@ try:
         # This flag controls whether telemetry is printed to the screen. 
         # We use a list so the changes in the main thread can be seen by the telemetry threads.
         print_telemetry = [True]
+        # print_telemetry = [False]  
 
         # Start the telemetry thread
         telemetry_thread = threading.Thread(target=handle_telemetry, args=(keep_running, print_telemetry, sock))
@@ -255,7 +256,7 @@ try:
         drones_threads.append((sock, telemetry_thread, coordinator_ip, debug_port, hw_id, pos_id))
 
     # Main loop for command input
-    mission = 2  #  0
+    mission = 0  #  0
     state = 0
     n = 0
     while True:

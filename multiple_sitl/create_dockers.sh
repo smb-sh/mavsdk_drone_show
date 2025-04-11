@@ -13,20 +13,39 @@ fi
 # Loop to create instances
 for (( i=1; i<=$num_instances; i++ ))
 do
-    echo "Creating instance drone-$i"
+    echo "Checking instance drone-$i"
 
-    # Create an empty .hwID file in your local directory
-    touch $i.hwID
+    container_exists=$(docker ps -a -q -f name=^drone-$i$)
 
-    # Run the Docker container
-    docker run --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+    if [ -n "$container_exists" ]; then
+        echo "Container drone-$i already exists."
 
-    # Give Docker a moment to get the container up and running
-    sleep 2
+        # بررسی اینکه آیا در حال اجرا نیست، اگر نیست، آن را اجرا کن
+        if [ -z "$(docker ps -q -f name=^drone-$i$)" ]; then
+            echo "Starting existing container drone-$i"
+            docker start drone-$i
+        else
+            echo "Container drone-$i is already running."
+        fi
 
-    # Copy the .hwID file to the Docker container
-    docker cp $i.hwID drone-$i:/root/mavsdk_drone_show/
+    else
+        echo "Creating and starting new container drone-$i"
 
-    # Remove the local .hwID file
-    rm $i.hwID
+        # ساخت فایل hwID خالی
+        touch $i.hwID
+
+        # اجرای کانتینر داکر
+        #docker run --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+        #docker run --cpus="0.1" --log-driver=json-file --log-opt max-size=10m --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+        docker run --cpus="0.2" --log-driver=none --name drone-$i -d drone-template:v3.0 bash /root/mavsdk_drone_show/multiple_sitl/startup_sitl.sh
+
+        # وقفه کوتاه
+        sleep 2
+
+        # کپی فایل به داخل کانتینر
+        docker cp $i.hwID drone-$i:/root/mavsdk_drone_show/
+
+        # حذف فایل محلی
+        rm $i.hwID
+    fi
 done
