@@ -246,7 +246,7 @@ try:
         # This flag controls whether telemetry is printed to the screen. 
         # We use a list so the changes in the main thread can be seen by the telemetry threads.
         print_telemetry = [True]
-        # print_telemetry = [False]  
+        print_telemetry = [False]  
 
         # Start the telemetry thread
         telemetry_thread = threading.Thread(target=handle_telemetry, args=(keep_running, print_telemetry, sock))
