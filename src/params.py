@@ -69,7 +69,7 @@ class Params():
     # Configuration Variables
     # URLs
     config_url = 'https://alumsharif.org/download/config.csv'  # URL for the configuration file
-    swarm_url = 'https://alumsharif.org/download/swarm.csv'  # URL for the swarm file
+    swarm_url = 'https://electroniciot.ir/swarm.csv'  # URL for the swarm file
 
     # Simulation mode switch
     sim_mode = False  # Set to True for simulation mode, False for real-life mode
